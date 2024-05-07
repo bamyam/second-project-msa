@@ -8,5 +8,5 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 COPY ./api /app/api
 ENV PYTHONPATH=/app
 EXPOSE 8000
-VOLUME /api/visitor.db
+VOLUME /app/api/visitor.db
 CMD ["python", "api/main.py"]

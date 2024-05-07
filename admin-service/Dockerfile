@@ -9,5 +9,5 @@ COPY ./api /app/api
 ENV PYTHONPATH=/app
 
 EXPOSE 8010
-VOLUME /api/admin.db
+VOLUME /app/api/admin.db
 CMD ["python", "api/main.py"]
