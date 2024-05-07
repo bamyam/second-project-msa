@@ -89,6 +89,15 @@
                         </tr>`;
 
             result.forEach(visitor => {
+                status_nm = '';
+                if (visitor.status === 'Y') {
+                    status_nm = '승인';
+                } else if (visitor.status === 'N') {
+                    status_nm = '접수 중';
+                } else if (visitor.status === 'R') {
+                    status_nm = '거절';
+                }
+
                 tableHTML += `
                     <tr>
                         <th>${visitor.name}</th>
@@ -100,7 +109,7 @@
                         <th>${visitor.location}</th>
                         <th>${visitor.purpose}</th>
                         <th>${visitor.visit_date}</th>
-                        <th>${visitor.status}</th>
+                        <th>${status_nm}</th>
                     </tr>`;
             });
 
