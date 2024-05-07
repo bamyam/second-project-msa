@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {{> head_css}}
-    <link rel="stylesheet" href="/css/applyPage.css">
+    <!-- 구글 아이콘과 폰트 생략 -->
     <title>SJ COMPANY 방문객 서비스</title>
+    <style>
+        .info_box {
+            padding-top: 1px;
+            margin:  0 auto;
+            width: 900px;
+        }
+        .info_minibox1, .info_minibox2 {
+            float: left;
+            #border: 1px solid red;
+            width: 450px;
+            height: 400px;
+            font-weight: bold;
+            padding: 10px;
+            margin-top: 30px;
+            background-color: white;
+            box-shadow: 0 1px 1px 0 black;
+        }
+        .clearfix {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .btn_box {
+            text-align: center;
+            padding-top: 10px;
+        }
+        .applybtn, .rwbtn, .cancelbtn {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .date_all {
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: center;
+        }
+        .visit_date {
+            display: inline-block;
+            padding-top: 20px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body style="background-size: cover; background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')">
 <div class="container">
@@ -68,7 +109,10 @@
                             <div id="location">
                                 <div class="col-auto">
                                     <label for="location" class="col-form-label">방문장소</label>
-                                    <select class="form-select" name="location_id" id="select_location" aria-label="Default select example">
+                                    <select class="form-select" name="location_id" aria-label="Default select example">
+                                        {% for location in location_list %}
+                                            <option value="{{ location.id }}">{{location.location}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -83,7 +127,10 @@
                             <div id="employee_id">
                                 <div class="col-auto">
                                     <label for="employee_id" class="col-form-label">담당자</label>
-                                    <select class="form-select" name="employee_id" id="select_employee">
+                                    <select class="form-select" name="employee_id">
+                                        {% for emp in emp_list %}
+                                            <option value="{{ emp.id }}">{{emp.name}} {{emp.job_position}}</option>
+                                        {% endfor %}
                                     </select>
                                 </div>
                             </div>
@@ -125,18 +172,8 @@
 </div>
 
 <script>
-    window.addEventListener('load', async () =>{
+    window.addEventListener('load', () =>{
         document.querySelector('#applybtn').addEventListener('click', submitFormData);
-
-        try {
-            const EmployeesData = await getEmployeesInfo();
-            displayEmployeesInfo(EmployeesData);
-            const LocationsData = await getLocationsInfo();
-            displayLocationsInfo(LocationsData);
-        } catch (e){
-            console.error(e);
-            alert('임직원 목록 조회 실패!!!');
-        }
     })
 
     function validateForm() {
@@ -212,50 +249,6 @@
         var mm = String(today.getMonth() + 1).padStart(2, '0');
         var dd = String(today.getDate()).padStart(2, '0');
         return `${yyyy}-${mm}-${dd}`;
-    }
-
-    const getEmployeesInfo = async () => {
-        const res = await fetch(
-            'http://127.0.0.1:8000/apply/employees')
-
-        if(res.ok){
-            return await res.json();
-        } else {
-            throw new Error('정보 조회 실패!!!');
-        }
-    };
-
-    const displayEmployeesInfo = (Employees) => {
-        const select_employee = document.getElementById('select_employee'); // 정보를 표시할 셀렉트 박스
-        let html = '';
-
-        for(const emp of Employees){
-            html += `<option value="${emp.id}">${emp.name} ${emp.job_position}</option>`
-        }
-
-        select_employee.innerHTML = html;
-    }
-
-    const getLocationsInfo = async () => {
-            const res = await fetch(
-                'http://127.0.0.1:8000/apply/locations')
-
-            if(res.ok){
-                return await res.json();
-            } else {
-                throw new Error('정보 조회 실패!!!');
-            }
-        };
-
-    const displayLocationsInfo = (Locations) => {
-        const select_location = document.getElementById('select_location'); // 정보를 표시할 셀렉트 박스
-        let html = '';
-
-        for(const loc of Locations){
-            html += `<option value="${loc.id}">${loc.location}</option>`
-        }
-
-        select_location.innerHTML = html;
     }
 
     // input 요소에 오늘 날짜 설정
