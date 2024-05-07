@@ -1,0 +1,32 @@
+.info_box {
+    padding-top: 1px;
+    margin:  0 auto;
+    width: 900px;
+}
+.info_mini_box1 {
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 30px;
+    text-shadow: 3px 3px 3px gray;
+}
+.info_mini_box2_back {
+    background-color: white;
+    width: 900px;
+    box-shadow: 0 1px 1px 0 black;
+}
+.info_mini_box2 {
+    margin: 0 auto;
+    padding-top: 40px;
+    width: 500px;
+    height: 350px;
+    font-weight: bold;
+}
+.btn_box {
+    text-align: center;
+    padding-top: 20px;
+}
+.btn1, .btn2 {
+    display: inline-block;
+    margin-right: 10px;
+}
