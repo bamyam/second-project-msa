@@ -1,0 +1,21 @@
+.main_text {
+    #border: 1px solid red;
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    padding-top: 100px;
+    text-shadow: 3px 3px 3px gray;
+}
+.btn_box {
+    #border: 1px solid red;
+    text-align: center;
+    padding-top: 50px;
+}
+.btn1 {
+    display: inline-block;
+    margin-right: 10px;
+}
+.btn2 {
+    display: inline-block;
+    margin-left: 10px;
+}

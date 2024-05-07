@@ -1,0 +1,20 @@
+.ok_box {
+    margin: 0 auto;
+}
+.ok_text {
+    margin: 0 auto;
+    padding-top: 50px;
+    width: 900px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 3px 3px 3px gray;
+}
+.btn_box {
+    text-align: center;
+    padding-top: 100px;
+}
+.btn1, .btn2,  .btn3 {
+    display: inline-block;
+    margin-right: 10px;
+}

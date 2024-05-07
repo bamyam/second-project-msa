@@ -1,0 +1,26 @@
+.main_box_back {
+    width: 1000px;
+    background-image: url("https://img.freepik.com/free-photo/curled-black-chart-paper-on-a-dark-gray-background_53876-101426.jpg?w=740&t=st=1713777211~exp=1713777811~hmac=83008ededc2399fa59d39dee5a33b48cfc8e4fbee84e344be73765d276f25034");
+    margin: 0 auto;
+    height: 500px;
+    color: white;
+    text-shadow: 1px 1px 1px gray;
+}
+.intro_title1 {
+    padding-left: 50px;
+    font-weight: bold;
+    margin: 0 auto;
+    font-size: 20px;
+    opacity: 1;
+}
+.intro_title2 {
+    font-weight: bold;
+    margin: 0 auto;
+    font-size: 20px;
+    opacity: 1;
+}
+.intro_text {
+    width: 900px;
+    margin: 0 auto;
+    opacity: 1;
+}

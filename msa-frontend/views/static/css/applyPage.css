@@ -1,0 +1,39 @@
+.info_box {
+    padding-top: 1px;
+    margin:  0 auto;
+    width: 900px;
+}
+.info_minibox1, .info_minibox2 {
+    float: left;
+    #border: 1px solid red;
+    width: 450px;
+    height: 400px;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 30px;
+    background-color: white;
+    box-shadow: 0 1px 1px 0 black;
+}
+.clearfix {
+    content: "";
+    display: block;
+    clear: both;
+}
+.btn_box {
+    text-align: center;
+    padding-top: 10px;
+}
+.applybtn, .rwbtn, .cancelbtn {
+    display: inline-block;
+    margin-right: 10px;
+}
+.date_all {
+    font-size: 14px;
+    margin-top: 5px;
+    text-align: center;
+}
+.visit_date {
+    display: inline-block;
+    padding-top: 20px;
+    font-size: 16px;
+}
