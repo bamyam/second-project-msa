@@ -45,7 +45,7 @@ class VisitorsService:
             # name과 phone_number를 모두 만족하는 방문객 정보 조회
             stmt = select(Visitors.name,Visitors.phone_number,Visitors.email,Visitors.company_name
                           ,Visitors.job_position,Visitors.department_name,Location.location
-                          ,Visitors.purpose,Visitors.visit_date,Visitors.status)\
+                          ,Visitors.purpose,Visitors.visit_date,Visitors.status, Visitors.employee_id, Visitors.location_id)\
                 .join(Location)\
                 .where(and_(Visitors.name == name, Visitors.phone_number == phone_number))
 

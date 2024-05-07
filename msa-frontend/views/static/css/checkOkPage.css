@@ -1,0 +1,53 @@
+.main_box {
+    position: relative;
+    width: 1300px;
+    background-color: white;
+}
+.title_text {
+    font-weight: bold;
+    font-size: 40px;
+    color: white;
+    text-shadow: 2px 4px 2px black;
+    position: absolute;
+    top: -80px;
+}
+.title_list {
+    height: 250px;
+    overflow-y: auto
+}
+.table_name {
+    margin: 0 auto;
+    font-size: 14px;
+}
+.table_name th {
+    padding: 5px 22px 5px 22px;
+    border: 1px solid black;
+    text-align: center;
+    text-shadow: 0 1px 1px gray;
+}
+.table_name_title {
+    background-color: #BDBDBD;
+    font-size: 16px;
+}
+.guide_text {
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 1px 2px 1px gray;
+    text-align: center;
+    margin-top: 40px;
+}
+.btn_box {
+    text-align: center;
+    padding-top: 20px;
+}
+.btn1, .btn2 {
+    display: inline-block;
+    margin-right: 10px;
+}
+.recheck_text {
+    font-weight: bold;
+    font-size: 35px;
+    text-align: center;
+    text-shadow: 1px 2px 1px gray;
+    padding: 100px 0 100px 0;
+}
