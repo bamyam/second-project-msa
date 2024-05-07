@@ -245,7 +245,7 @@ accept_btn.addEventListener('click', () => {
     let jsondata = {};
     jsondata['number'] = document.getElementById("number").innerText;
 
-    fetch('http://127.0.0.1:8010/admin/accept', {
+    fetch('http://15.164.49.161:8010/admin/accept', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -289,7 +289,7 @@ reject_btn.addEventListener('click', () => {
     jsondata['number'] = document.getElementById("number_r").innerText;
     jsondata['reason'] = document.getElementById("reason").value;
 
-    fetch('http://127.0.0.1:8010/admin/reject', {
+    fetch('http://15.164.49.161:8010/admin/reject', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -342,7 +342,7 @@ window.addEventListener('load', async () => {
     async function getPageResult(cpg) {
 
         try {
-            const res = await fetch(`http://127.0.0.1:8010/admin/${cpg || 1}`, {
+            const res = await fetch(`http://15.164.49.161:8010/admin/${cpg || 1}`, {
                 method: 'GET', // HTTP 메소드를 GET으로 지정
                 headers: {
                     'Accept': 'application/json' // 서버 응답을 JSON으로 받기를 기대
