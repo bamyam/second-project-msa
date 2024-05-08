@@ -240,12 +240,15 @@ let closeModal2 = () => {
 <script>
 let accept_btn = document.querySelector('#accept_btn');
 
+// 서버에서 전달된 `adminServerUrl` 변수를 JavaScript에서 사용
+const adminServerUrl = "{{adminServerUrl}}";
+
 accept_btn.addEventListener('click', () => {
     document.querySelector(".loader").style.display = "block";
     let jsondata = {};
     jsondata['number'] = document.getElementById("number").innerText;
 
-    fetch('http://3.34.47.148:8010/admin/accept', {
+    fetch(`${adminServerUrl}/admin/accept`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -289,7 +292,7 @@ reject_btn.addEventListener('click', () => {
     jsondata['number'] = document.getElementById("number_r").innerText;
     jsondata['reason'] = document.getElementById("reason").value;
 
-    fetch('http://3.34.47.148:8010/admin/reject', {
+    fetch(`${adminServerUrl}/admin/reject`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -342,7 +345,7 @@ window.addEventListener('load', async () => {
     async function getPageResult(cpg) {
 
         try {
-            const res = await fetch(`http://3.34.47.148:8010/admin/${cpg || 1}`, {
+            const res = await fetch(`${adminServerUrl}/admin/${cpg || 1}`, {
                 method: 'GET', // HTTP 메소드를 GET으로 지정
                 headers: {
                     'Accept': 'application/json' // 서버 응답을 JSON으로 받기를 기대

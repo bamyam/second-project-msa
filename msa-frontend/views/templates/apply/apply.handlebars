@@ -170,6 +170,9 @@
         return true;
     }
 
+    // 서버에서 전달된 `adminServerUrl` 변수를 JavaScript에서 사용
+    const visitorServerUrl = "{{visitorServerUrl}}";
+
     function submitFormData() {
         if (!validateForm()) {
             return; // 유효성 검사에 실패하면 제출을 중단합니다.
@@ -182,7 +185,7 @@
             jsonData[key] = val;
         });
 
-        let apiUrl = `http://3.34.47.148:8000/apply/applyok`;
+        let apiUrl = `${visitorServerUrl}/apply/applyok`;
         fetch(apiUrl, {
             method: 'POST',
             headers: {
@@ -216,7 +219,7 @@
 
     const getEmployeesInfo = async () => {
         const res = await fetch(
-            'http://3.34.47.148:8000/apply/employees')
+            `${visitorServerUrl}/apply/employees`)
 
         if(res.ok){
             return await res.json();
@@ -238,7 +241,7 @@
 
     const getLocationsInfo = async () => {
             const res = await fetch(
-                'http://3.34.47.148:8000/apply/locations')
+                `${visitorServerUrl}/apply/locations`)
 
             if(res.ok){
                 return await res.json();

@@ -47,8 +47,11 @@
         const form = document.getElementById('datafrm'); // 폼 요소 가져오기
         const formData = new FormData(form); // 폼 데이터를 FormData 객체로 생성
 
+        // 서버에서 전달된 `adminServerUrl` 변수를 JavaScript에서 사용
+        const visitorServerUrl = "{{visitorServerUrl}}";
+
         try {
-            const res = await fetch('http://3.34.47.148:8000/check/checkok', {
+            const res = await fetch(`${visitorServerUrl}/check/checkok`, {
                 method: 'POST', // HTTP 메소드 지정
                 body: formData, // 폼 데이터 전송
                 headers: {
