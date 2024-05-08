@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="visitor" uuid="f1b0b92f-2b47-46f3-b1d6-1d879e6e0d00">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>69859d50-d862-44ca-8f29-951ba82c35d2</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\clouds\Documents\gitroot\second-project-msa-R\visitor-service\api\visitor.db</jdbc-url>
@@ -20,7 +20,7 @@
       </libraries>
     </data-source>
     <data-source source="LOCAL" name="admin" uuid="988f09ea-ed9b-4dd0-ae5a-43bd0608d0a5">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>69859d50-d862-44ca-8f29-951ba82c35d2</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\clouds\Documents\gitroot\second-project-msa-R\admin-service\api\admin.db</jdbc-url>

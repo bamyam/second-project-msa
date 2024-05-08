@@ -2,13 +2,15 @@ import uvicorn
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 import database as sess
-
+from prometheus_fastapi_instrumentator import Instrumentator
 
 from api.routes.svc import svc_router
 from api.routes.intro import intro_router
 from api.routes.admin import admin_router  # 라우터 모듈 임포트
 
 app = FastAPI()
+instrumentator = Instrumentator()
+instrumentator.instrument(app).expose(app)
 
 # CORS 설정
 origins = [

@@ -2,6 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import database as sess
+from prometheus_fastapi_instrumentator import Instrumentator
 
 # dbfactory 모듈에서 세션과 초기화 함수 가져오기
 
@@ -12,6 +13,8 @@ from api.routes.intro import intro_router
 from api.routes.apply import apply_router
 
 app = FastAPI()
+instrumentator = Instrumentator()
+instrumentator.instrument(app).expose(app)
 
 # CORS 설정
 origins = [
