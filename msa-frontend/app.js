@@ -1,8 +1,13 @@
 var express = require('express');
 var path = require('path');
 var port = 3000;
+const promBundle = require('express-prom-bundle');
+const metricsMiddleware = promBundle({includeMethod: true, includePath: true});
+
 var { engine } = require('express-handlebars');
+
 var app = express();
+app.use(metricsMiddleware);
 
 var VISITOR_SERVER_URL = 'http://3.34.47.148:8000';
 var ADMIN_SERVER_URL = 'http://3.34.47.148:8010';

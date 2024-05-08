@@ -9,3 +9,4 @@ uvicorn
 itsdangerous==2.1.2
 python-multipart
 requests
+prometheus-fastapi-instrumentator
