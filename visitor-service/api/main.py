@@ -19,7 +19,10 @@ instrumentator.instrument(app).expose(app)
 # CORS 설정
 origins = [
     "http://localhost:3000",  # 허용할 프론트엔드 도메인
-    "http://3.34.47.148:3000"
+    "http://3.34.47.148:3000",
+    "http://msa-frontendapp-service:3000",
+    "http://43.200.179.142:32333"
+
 
 
 ]

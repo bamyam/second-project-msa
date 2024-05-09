@@ -1,0 +1,164 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msa-frontend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: msa-frontend
+  template:
+    metadata:
+      labels:
+        app: msa-frontend
+    spec:
+      containers:
+        - name: msa-frontend
+          image: manuma159159/msa-frontend:latest  # 이미지 이름 변경
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visitor-service-deployment
+  labels:
+    app: visitor-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: visitor-service
+  template:
+    metadata:
+      labels:
+        app: visitor-service
+    spec:
+      containers:
+        - name: visitor-service
+          image: manuma159159/visitor-service:latest
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-service-deployment
+  labels:
+    app: admin-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-service
+  template:
+    metadata:
+      labels:
+        app: admin-service
+    spec:
+      containers:
+        - name: admin-service
+          image: manuma159159/admin-service:latest
+          ports:
+            - containerPort: 3000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: html-volume
+              mountPath: /usr/share/nginx/html
+            - name: config-volume
+              mountPath: /etc/nginx/conf.d
+      volumes:
+        - name: html-volume
+          configMap:
+            name: html-content
+        - name: config-volume
+          configMap:
+            name: nginx-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: msa-frontend-service
+spec:
+  selector:
+    app: msa-frontend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 32321
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: visitor-service
+spec:
+  selector:
+    app: visitor-service
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+      nodePort: 32322  
+  type: NodePort 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: admin-service
+spec:
+  selector:
+    app: admin-service
+  ports:
+    - protocol: TCP
+      port: 8010
+      targetPort: 8010
+      nodePort: 32323
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  type: NodePort  # 외부 접근을 위한 LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 32333
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: html-content
+data:
+  index.html: |
+    <h1>Hello, mk8s & msa !! </h1>
+
