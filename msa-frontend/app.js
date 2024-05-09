@@ -9,8 +9,8 @@ var { engine } = require('express-handlebars');
 var app = express();
 app.use(metricsMiddleware);
 
-var VISITOR_SERVER_URL = 'http://3.34.47.148:8000';
-var ADMIN_SERVER_URL = 'http://3.34.47.148:8010';
+var VISITOR_SERVER_URL = 'http://43.200.179.142:32322';
+var ADMIN_SERVER_URL = 'http://43.200.179.142:32323';
 
 app.use(express.static(path.join(__dirname, 'views')));
 
