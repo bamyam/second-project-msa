@@ -25,7 +25,6 @@ origins = [
     "http://43.203.228.137:32321"
 
 
-
 ]
 
 app.add_middleware(
